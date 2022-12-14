@@ -12,6 +12,7 @@ class CatalogPage:
     textbox_sku_name = "Sku"
     dropdown_category_id = "SelectedCategoryIds_taglist"
     button_save_name = "save"
+    message_success_xpath = "//button[@type='button' and @data-dismiss='alert']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -41,3 +42,10 @@ class CatalogPage:
 
     def clickOnSaveButton(self):
         self.driver.find_element(By.NAME, self.button_save_name).click()
+
+    def getSuccessMessage(self):
+        result = self.driver.find_elements(By.XPATH, self.message_success_xpath)
+        if len(result) == 0:
+            return False
+        else:
+            return True

@@ -46,7 +46,7 @@ class Test_002_Customer:
         self.cp.clickOnCustomerLink()
         self.cp.clickOnAddCustomerButton()
         time.sleep(2)
-        self.cp.setUserEmail("pravin179patil@y.com")
+        self.cp.setUserEmail("pravin22.96patil@y.com")
         time.sleep(2)
         self.cp.setUserPassword("test123")
         time.sleep(2)
@@ -65,10 +65,13 @@ class Test_002_Customer:
         self.cp.setAdminComments("test comments")
         time.sleep(2)
         self.cp.clickOnSaveButton()
-        if self.cp.getSuccessMessage():
+        result = self.cp.getSuccessMessage()
+        if result:
             self.driver.close()
+            print("in if condition")
             assert True
         else:
+            print("in else condition")
             self.driver.save_screenshot(".\\ScreenShots\\" + "test_AddCustomer.png")
             self.driver.close()
             assert False
