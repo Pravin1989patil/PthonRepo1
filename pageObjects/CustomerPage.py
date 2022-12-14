@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-
+from selenium.common.exceptions import NoSuchElementException
 
 class CustomerPage:
     link_customer_tab_xpath = "//i[@class='nav-icon far fa-user']"
@@ -17,7 +17,7 @@ class CustomerPage:
     dropdown_roles_list = "// ul[ @ id = 'SelectedCustomerRoleIds_listbox'] // li"
     dropdown_vendor_id = "VendorId"
     textarea_admincomment_id = "AdminComment"
-    message_success_xpath="//button[@type='button' and @class='close' and text()='×']"
+    message_success_xpath = "//button[@type='button' and @class='close' and text()='×1']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -68,4 +68,8 @@ class CustomerPage:
         self.driver.find_element(By.NAME, self.button_save_name).click()
 
     def getSuccessMessage(self):
-        return self.driver.find_element(By.XPATH, self.message_success_xpath).is_displayed()
+        result = self.driver.find_elements(By.XPATH, self.message_success_xpath)
+        if len(result) == 0:
+            return False
+        else:
+            return True
