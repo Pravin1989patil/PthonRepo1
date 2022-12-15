@@ -24,7 +24,7 @@ class Test_003_Customer:
         self.pp.clickOnCatalogTab()
         self.pp.clickOnProductsLink()
         self.pp.clickOnAddProductButton()
-        self.pp.setProductName("Soap3")
+        self.pp.setProductName("Soap9")
         time.sleep(2)
         self.pp.setProductDescription("test")
         time.sleep(2)

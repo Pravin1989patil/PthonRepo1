@@ -1,5 +1,5 @@
 import time
-
+import pytest
 from pageObjects.CustomerPage import CustomerPage
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
@@ -10,6 +10,7 @@ class Test_002_Customer:
     username = ReadConfig.getUserName()
     password = ReadConfig.getUserPassword()
 
+    @pytest.mark.skip
     def test_CustomerPageTitle(self, setup):
         self.driver = setup
         self.driver.implicitly_wait(10)
@@ -46,7 +47,7 @@ class Test_002_Customer:
         self.cp.clickOnCustomerLink()
         self.cp.clickOnAddCustomerButton()
         time.sleep(2)
-        self.cp.setUserEmail("pravin22.96patil@y.com")
+        self.cp.setUserEmail("pravin97.96patil@y.com")
         time.sleep(2)
         self.cp.setUserPassword("test123")
         time.sleep(2)

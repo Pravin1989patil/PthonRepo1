@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoSuchElementException
 
+
 class CustomerPage:
     link_customer_tab_xpath = "//i[@class='nav-icon far fa-user']"
     link_customer_list_xpath = "//a[@href='/Admin/Customer/List']"
@@ -17,7 +18,7 @@ class CustomerPage:
     dropdown_roles_list = "// ul[ @ id = 'SelectedCustomerRoleIds_listbox'] // li"
     dropdown_vendor_id = "VendorId"
     textarea_admincomment_id = "AdminComment"
-    message_success_xpath = "//button[@type='button' and @class='close' and text()='×1']"
+    message_success_xpath = "//button[@type='button' and @class='close' and text()='×']"
 
     def __init__(self, driver):
         self.driver = driver
