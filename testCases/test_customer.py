@@ -16,6 +16,7 @@ class Test_002_Customer:
     password = ReadConfig.getUserPassword()
 
     @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.regression
     def test_CustomerPageTitle(self, setup):
         self.driver = setup
         self.driver.implicitly_wait(10)
@@ -40,6 +41,7 @@ class Test_002_Customer:
             assert False
 
     @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.sanity
     def test_AddCustomer(self, setup):
         self.driver = setup
         self.driver.implicitly_wait(10)
