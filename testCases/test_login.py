@@ -1,5 +1,6 @@
 import time
 
+import pytest
 from allure_commons.model2 import Attachment
 
 from pageObjects.LoginPage import LoginPage
@@ -16,6 +17,7 @@ class Test_001_Login:
     password = ReadConfig.getUserPassword()
 
     @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.regression
     def test_homePageTitle(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -32,6 +34,7 @@ class Test_001_Login:
             assert False
 
     @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.sanity
     def test_login_test(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)

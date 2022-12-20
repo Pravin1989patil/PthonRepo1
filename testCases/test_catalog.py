@@ -1,6 +1,7 @@
 import time
 
 import allure
+import pytest
 from allure_commons.model2 import Attachment
 from allure_commons.types import AttachmentType
 
@@ -16,6 +17,7 @@ class Test_003_Catalog:
     password = ReadConfig.getUserPassword()
 
     @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.sanity
     def test_AddProduct(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)

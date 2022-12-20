@@ -1,0 +1,1 @@
+python -m pytest -v -s -m "regression" --html=./Report/report.html --alluredir="C:\Users\Pravin\PycharmProjects\nopCommerseDemoProject\AllureReport\reports"
