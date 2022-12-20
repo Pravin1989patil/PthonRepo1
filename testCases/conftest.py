@@ -7,3 +7,4 @@ from webdriver_manager.chrome import ChromeDriverManager
 def setup():
     driver = webdriver.Chrome(ChromeDriverManager().install())
     return driver
+    
