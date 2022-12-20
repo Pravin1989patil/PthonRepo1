@@ -1,15 +1,21 @@
-
 import time
+
+from allure_commons.model2 import Attachment
+
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 
-
 # from utilities.customLogger import LogGen
+import allure
+
+
+@allure.severity(allure.severity_level.MINOR)
 class Test_001_Login:
     baseURL = ReadConfig.getApplicationURl()
     username = ReadConfig.getUserName()
     password = ReadConfig.getUserPassword()
 
+    @allure.severity(allure.severity_level.MINOR)
     def test_homePageTitle(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -20,10 +26,12 @@ class Test_001_Login:
             self.driver.close()
             assert True
         else:
+            allure.attach(self.driver.get_screenshot_as_png(), name="HomePageTitle", attachment_type=Attachment.PNG)
             self.driver.save_screenshot(".\\ScreenShots\\" + "test_homePageTitle.png")
             self.driver.close()
             assert False
 
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_login_test(self, setup):
         self.driver = setup
         self.driver.get(self.baseURL)

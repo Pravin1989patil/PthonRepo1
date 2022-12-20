@@ -1,16 +1,21 @@
 import time
+import allure
 import pytest
+from allure_commons.model2 import Attachment
+from allure_commons.types import AttachmentType
+
 from pageObjects.CustomerPage import CustomerPage
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 
 
+@allure.severity(allure.severity_level.NORMAL)
 class Test_002_Customer:
     baseURL = ReadConfig.getApplicationURl()
     username = ReadConfig.getUserName()
     password = ReadConfig.getUserPassword()
 
-    @pytest.mark.skip
+    @allure.severity(allure.severity_level.MINOR)
     def test_CustomerPageTitle(self, setup):
         self.driver = setup
         self.driver.implicitly_wait(10)
@@ -29,10 +34,12 @@ class Test_002_Customer:
             self.driver.close()
             assert True
         else:
+            allure.attach(self.driver.get_screenshot_as_png(), name="test_CustomerPageTitle", attachment_type=AttachmentType.PNG)
             self.driver.save_screenshot(".\\ScreenShots\\" + "test_CustomerPageTitle.png")
             self.driver.close()
             assert False
 
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_AddCustomer(self, setup):
         self.driver = setup
         self.driver.implicitly_wait(10)
@@ -47,7 +54,7 @@ class Test_002_Customer:
         self.cp.clickOnCustomerLink()
         self.cp.clickOnAddCustomerButton()
         time.sleep(2)
-        self.cp.setUserEmail("pravin97.96patil@y.com")
+        self.cp.setUserEmail("pravin7.96patil@y.com")
         time.sleep(2)
         self.cp.setUserPassword("test123")
         time.sleep(2)
@@ -72,7 +79,7 @@ class Test_002_Customer:
             print("in if condition")
             assert True
         else:
-            print("in else condition")
+            allure.attach(self.driver.get_screenshot_as_png(), name="test_AddCustomer", attachment_type=AttachmentType.PNG)
             self.driver.save_screenshot(".\\ScreenShots\\" + "test_AddCustomer.png")
             self.driver.close()
             assert False
